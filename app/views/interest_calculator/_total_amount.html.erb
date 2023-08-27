@@ -1,0 +1,7 @@
+<div>
+    <% if service_calculator.successful? %>
+        <p><b>Fixed Term Return</b> : <%=service_calculator.total_amount%></p>
+    <% else %>
+        <p><%=service_calculator.errors[:message]%></p>
+    <% end %>
+</div>

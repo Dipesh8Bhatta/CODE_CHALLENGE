@@ -1,0 +1,20 @@
+<h1>Interest Calculator</h1>
+<div>
+    <%= form_with url: calculate_total_path, method: :post do |form| %>
+        <%= form.label :principle, "Start Deposit Amount:" %>
+        <%= form.number_field :principle, min: 0, required: true %>
+        </br>
+        <%= form.label :interest_rate, "Interest Rate:" %>
+        <%= form.number_field :interest_rate, step: "any", min: 0, required: true%>
+        </br>
+        <%= form.label :investment_term, "Investment Term:" %>
+        <%= form.number_field :investment_term, min: 0, required: true %>
+        </br>
+        <%= form.label :interest_paid, "Interest Paid:" %>
+        <%= form.collection_radio_buttons :interest_paid, @interest_paid_period, :last, :first, checked: @interest_paid_period.last %>
+        </br>
+        <%= form.submit "Calculate" %>
+    <% end %>
+
+    <%= turbo_frame_tag "total-calculation" %>
+</div>
